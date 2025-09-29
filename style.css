@@ -1,1 +1,14 @@
-;background color gray;
+ body {
+        background-color: black;
+    }
+.socials {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.linkimages {
+    width: 40px;
+    height: 40px;
+}
