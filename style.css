@@ -38,3 +38,9 @@ a:hover {
   padding: 12px 25px;
   cursor: pointer;
   transition: all 0.2s ease;
+
+  .content {
+  max-width: 600px;   
+  margin-left: 50px;  
+  text-align: left;   
+}
