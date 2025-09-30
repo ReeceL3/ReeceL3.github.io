@@ -30,4 +30,11 @@ a:hover {
     transform: scale(1.1);
 }
 
-
+.topbutton {
+  color: #F0E2C5;
+  background: transparent;
+  border: 2px solid transparent;
+  font-size: 1.2rem;
+  padding: 12px 25px;
+  cursor: pointer;
+  transition: all 0.2s ease;
