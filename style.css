@@ -2,6 +2,7 @@ body {
     margin: 0;
     background-color: black;
     color: white;
+    font-family:monospace
 }
 
 a {
@@ -18,7 +19,8 @@ a:hover {
   justify-content: flex-start; 
   gap: 20px;                   
   margin-top: 20px;
-  margin-left: 50px;           
+  margin-left: 50px; 
+  justify-content: center;           
 }
 
 
@@ -26,7 +28,7 @@ a:hover {
 .linkimages {
     width: 40px;
     height: 40px;
-    justify-content: left;
+    
 }
 
 
@@ -42,9 +44,24 @@ a:hover {
   padding: 12px 25px;
   cursor: pointer;
   transition: all 0.2s ease;
+}
 
-  .content {
+
+.content {
   max-width: 600px;   
-  margin-left: 50px;  
-  text-align: left;   
+  margin: 0 auto;  
+  text-align: center;  
+}
+
+
+.topbutton:hover {
+  border: 2px solid white;   
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+header {
+  display: flex;
+  justify-content: center; 
+  gap: 20px;               
+  margin-top: 20px;        
 }
