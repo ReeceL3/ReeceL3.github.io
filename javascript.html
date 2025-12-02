@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a href="index.html">
+      <button class="topbutton">About Me!</button>
+    </a>
+    <a href="projects.html">
+      <button class="topbutton">Projects!</button>
+    </a>
+    <a href="Resume.html">
+      <button class="topbutton">Resume!</button>
+    </a>
+    <a href="javascript.html">
+      <button class="topbutton">Java Script Demos</button>
+    </a>
+  </header>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        text-align: center;
+    }
+
+    section {
+        margin-bottom: 50px;
+    }
+
+    button {
+        padding: 10px 15px;
+        margin-top: 10px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    /* ===== MOUSE TRAIL EFFECT ===== */
+    .trail {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: rgb(200, 0, 255);
+        border-radius: 50%;
+        pointer-events: none;
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+
+    /* ===== TYPEWRITER ===== */
+    #typewriterBox {
+        font-size: 22px;
+        font-weight: bold;
+        border-right: 3px solid black;
+        width: fit-content;
+        margin: 0 auto;
+    }
+
+    /* ===== CAT IMAGE ===== */
+    #catImg {
+        width: 250px;
+        margin-top: 10px;
+        border-radius: 10px;
+    }
+
+    /* ===== DVD LOGO ===== */
+    #dvd {
+        position: absolute;
+        top: 100px;
+        left: 100px;
+        width: 120px;
+        height: 60px;
+        background: purple;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        font-weight: bold;
+    }
+
+    /* ===== FALLING EMOJIS ===== */
+    .emoji {
+        position: absolute;
+        font-size: 30px;
+        animation: fall 2.5s linear forwards;
+        pointer-events: none;
+    }
+
+    @keyframes fall {
+        to {
+            transform: translateY(100vh);
+            opacity: 0;
+        }
+    }
+
+    /* ===== SHAKE EFFECT ===== */
+    @keyframes shakeScreen {
+        0% { transform: translate(0px, 0px); }
+        25% { transform: translate(-15px, 10px); }
+        50% { transform: translate(15px, -10px); }
+        75% { transform: translate(-15px, 10px); }
+        100% { transform: translate(0px, 0px); }
+    }
+</style>
+
+<body>
+
+<h1>JavaScript Fun Effects!</h1>
+
+<section>
+    <h2>Typewriter Effect</h2>
+    <div id="typewriterBox"></div>
+</section>
+
+<section>
+    <h2>Random Cat Image</h2>
+    <button id="catBtn">Show Random Cat image</button><br>
+    <img id="catImg" src="">
+</section>
+
+<section>
+    <h2>Rainbow Background</h2>
+    <button id="rainbowBtn">Activate Rainbow background</button>
+</section>
+
+<section>
+    <h2>Falling Emojis</h2>
+    <button id="emojiBtn">Make it Rain emojis</button>
+</section>
+
+<section>
+    <h2>Random Funny Sounds</h2>
+    <button id="soundBtn">Play a Random Sound </button>
+</section>
+
+<!-- DVD LOGO -->
+<div id="dvd">DVD</div>
+
+<script>
+/* ========================================
+   1. MOUSE TRAIL EFFECT
+========================================== */
+document.addEventListener("mousemove", e => {
+    const dot = document.createElement("div");
+    dot.className = "trail";
+    dot.style.left = e.pageX + "px";
+    dot.style.top = e.pageY + "px";
+    document.body.appendChild(dot);
+
+    setTimeout(() => dot.remove(), 500);
+});
+
+/* ========================================
+   2. TYPEWRITER EFFECT
+========================================== */
+const typeText = "Welcome to my JavaScript demo page!";
+let i = 0;
+
+function typeWriter() {
+    if (i < typeText.length) {
+        document.getElementById("typewriterBox").textContent += typeText[i];
+        i++;
+        setTimeout(typeWriter, 80);
+    }
+}
+typeWriter();
+
+/* ========================================
+   3. RANDOM CAT IMAGE (API)
+========================================== */
+document.getElementById("catBtn").onclick = () => {
+    fetch("https://api.thecatapi.com/v1/images/search")
+        .then(r => r.json())
+        .then(data => {
+            document.getElementById("catImg").src = data[0].url;
+        });
+};
+
+/* ========================================
+   4. RAINBOW BACKGROUND
+========================================== */
+document.getElementById("rainbowBtn").onclick = () => {
+    let hue = 0;
+    setInterval(() => {
+        document.body.style.backgroundColor = `hsl(${hue}, 80%, 60%)`;
+        hue = (hue + 3) % 360;
+    }, 50);
+};
+
+/* ========================================
+   5. FALLING EMOJIS
+========================================== */
+document.getElementById("emojiBtn").onclick = () => {
+    const emojis = ["🔥", "✨", "🎉", "🤖", "😎", "🌈", "⭐"];
+    const emoji = document.createElement("div");
+    emoji.className = "emoji";
+    emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    emoji.style.left = Math.random() * window.innerWidth + "px";
+    emoji.style.top = "-20px";
+    document.body.appendChild(emoji);
+
+    setTimeout(() => emoji.remove(), 2500);
+};
+
+/* ========================================
+   6. RANDOM SOUND
+========================================== */
+const sounds = [
+    "https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg",
+    "https://actions.google.com/sounds/v1/cartoon/boing.ogg",
+    "https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg"
+];
+
+document.getElementById("soundBtn").onclick = () => {
+    const audio = new Audio(sounds[Math.floor(Math.random() * sounds.length)]);
+    audio.play();
+};
+
+/* ========================================
+   7. CRAZY DVD BOUNCING LOGO
+========================================== */
+const dvd = document.getElementById("dvd");
+let x = 100, y = 100;
+let vx = 2, vy = 2;
+
+function crazyScreen() {
+    document.body.style.animation = "shakeScreen 0.4s";
+
+    let flashes = 0;
+    const flash = setInterval(() => {
+        document.body.style.backgroundColor =
+            `hsl(${Math.random() * 360}, 100%, 60%)`;
+        flashes++;
+        if (flashes > 8) {
+            clearInterval(flash);
+            document.body.style.backgroundColor = "";
+        }
+    }, 40);
+
+    setTimeout(() => {
+        document.body.style.animation = "";
+    }, 400);
+}
+
+function animateDVD() {
+    const w = window.innerWidth - dvd.offsetWidth;
+    const h = window.innerHeight - dvd.offsetHeight;
+
+    x += vx;
+    y += vy;
+
+    let hitCorner =
+        (x <= 0 || x >= w) &&
+        (y <= 0 || y >= h);
+
+    if (x <= 0 || x >= w) vx *= -1;
+    if (y <= 0 || y >= h) vy *= -1;
+
+    if (hitCorner) crazyScreen();
+
+    dvd.style.left = x + "px";
+    dvd.style.top = y + "px";
+
+    requestAnimationFrame(animateDVD);
+}
+animateDVD();
+</script>
+
+</body>
+</html>
