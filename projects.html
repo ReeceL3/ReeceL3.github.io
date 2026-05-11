@@ -3,6 +3,78 @@
 <head>
     <title>Projects — Reece Leafblad</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .projects-wrap {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        .projects-wrap > p {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 14px;
+            margin: 0 0 36px;
+        }
+
+        .section-label {
+            font-size: 12px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #a78bfa;
+            border-bottom: 1px solid rgba(167, 139, 250, 0.3);
+            padding-bottom: 6px;
+            margin-bottom: 16px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 16px 18px;
+            transition: border-color 0.2s, background 0.2s;
+            text-decoration: none;
+            display: block;
+            color: inherit;
+        }
+
+        .project-card:hover {
+            border-color: rgba(167, 139, 250, 0.5);
+            background: rgba(167, 139, 250, 0.06);
+            text-decoration: none;
+        }
+
+        .project-card h3 {
+            font-size: 15px;
+            margin: 0 0 6px;
+            color: #fff;
+            text-align: left;
+        }
+
+        .project-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.5);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .project-card .tag {
+            display: inline-block;
+            font-size: 11px;
+            color: #a78bfa;
+            border: 1px solid rgba(167, 139, 250, 0.4);
+            border-radius: 4px;
+            padding: 2px 7px;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
   <header>
@@ -12,27 +84,73 @@
     <a href="javascript.html"><button class="topbutton">JS Demos</button></a>
   </header>
 
-  <div class="title">
+  <div class="projects-wrap">
     <h1>Projects</h1>
-  </div>
+    <p>Things I've built. Click any card to view the repo on GitHub.</p>
 
-  <div class="content">
-    <p>A few things I've built — check them out below or browse my <a href="https://github.com/ReeceL3" target="_blank">GitHub</a> for everything.</p>
-  </div>
+    <div class="section-label">Personal</div>
+    <div class="card-grid">
 
-  <ul class="project-list">
-    <li>
-      <a href="https://github.com/WTCSC/pet-rock-simulator-ReeceL3" target="_blank">Pet Rock Simulator</a>
-    </li>
-    <li>
-      <a href="https://github.com/WTCSC/life-decision-simulator-ReeceL3" target="_blank">Life Decision Simulator</a>
-    </li>
-    <li>
-      <a href="https://github.com/WTCSC/the-sarcastic-calculator-ReeceL3" target="_blank">Sarcastic Calculator</a>
-    </li>
-    <li>
-      <a href="https://github.com/WTCSC/fahrenheit-404-ReeceL3/tree/main" target="_blank">Temperature Converter</a>
-    </li>
-  </ul>
+      <a class="project-card" href="https://github.com/ReeceL3/crlf.wtf" target="_blank">
+        <h3>crlf.wtf</h3>
+        <p>Live code demos for Computer Science and Cybersecurity class.</p>
+        <span class="tag">cybersecurity</span>
+      </a>
+
+      <a class="project-card" href="https://github.com/ReeceL3/67-water-rpg" target="_blank">
+        <h3>Water RPG</h3>
+        <p>A text-based RPG game built in Python.</p>
+        <span class="tag">python</span>
+      </a>
+
+      <a class="project-card" href="https://github.com/ReeceL3/music-label-management" target="_blank">
+        <h3>Music Label Management</h3>
+        <p>A database-driven app for managing a music label.</p>
+        <span class="tag">database</span>
+      </a>
+
+      <a class="project-card" href="https://github.com/ReeceL3/Database-final-project" target="_blank">
+        <h3>Database Final Project</h3>
+        <p>Final project from database class.</p>
+        <span class="tag">database</span>
+      </a>
+
+      <a class="project-card" href="https://github.com/ReeceL3/NREL" target="_blank">
+        <h3>NREL</h3>
+        <p>Project related to the National Renewable Energy Laboratory.</p>
+        <span class="tag">research</span>
+      </a>
+
+    </div>
+
+    <div class="section-label">School (Warren Tech)</div>
+    <div class="card-grid">
+
+      <a class="project-card" href="https://github.com/WTCSC/pet-rock-simulator-ReeceL3" target="_blank">
+        <h3>Pet Rock Simulator</h3>
+        <p>Simulate owning a pet rock — a fun Python class project.</p>
+        <span class="tag">python</span>
+      </a>
+
+      <a class="project-card" href="https://github.com/WTCSC/life-decision-simulator-ReeceL3" target="_blank">
+        <h3>Life Decision Simulator</h3>
+        <p>A choose-your-own-adventure style decision simulator.</p>
+        <span class="tag">python</span>
+      </a>
+
+      <a class="project-card" href="https://github.com/WTCSC/the-sarcastic-calculator-ReeceL3" target="_blank">
+        <h3>Sarcastic Calculator</h3>
+        <p>A calculator that complains about your math.</p>
+        <span class="tag">python</span>
+      </a>
+
+      <a class="project-card" href="https://github.com/WTCSC/fahrenheit-404-ReeceL3/tree/main" target="_blank">
+        <h3>Temperature Converter</h3>
+        <p>Converts between Fahrenheit, Celsius, and Kelvin.</p>
+        <span class="tag">python</span>
+      </a>
+
+    </div>
+  </div>
 </body>
 </html>
