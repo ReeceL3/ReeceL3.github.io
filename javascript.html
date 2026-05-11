@@ -1,273 +1,307 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>JS Demos — Reece Leafblad</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .demos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .demo-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .demo-card h2 {
+            font-size: 16px;
+            margin: 0 0 8px;
+            color: rgb(173, 184, 12);
+            text-align: center;
+        }
+
+        .demo-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.5);
+            margin: 0 0 14px;
+            line-height: 1.5;
+        }
+
+        .demo-btn {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 8px;
+            padding: 7px 16px;
+            font-size: 13px;
+            font-family: monospace;
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .demo-btn:hover {
+            border-color: #fff;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .demo-btn.active {
+            border-color: rgb(173, 184, 12);
+            color: rgb(173, 184, 12);
+        }
+
+        #typewriterBox {
+            font-size: 15px;
+            min-height: 22px;
+            border-right: 2px solid rgba(255, 255, 255, 0.6);
+            display: inline-block;
+            margin-bottom: 6px;
+        }
+
+        #catImg {
+            width: 100%;
+            max-height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        #dvdBox {
+            position: relative;
+            width: 100%;
+            height: 140px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        #dvd {
+            position: absolute;
+            width: 72px;
+            height: 36px;
+            background: purple;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .emoji-fall {
+            position: fixed;
+            font-size: 26px;
+            pointer-events: none;
+            animation: fall 2s linear forwards;
+            z-index: 100;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(110vh); opacity: 0; }
+        }
+
+        .trail-dot {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: rgb(173, 184, 12);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 200;
+            animation: fadeDot 0.4s forwards;
+        }
+
+        @keyframes fadeDot {
+            to { opacity: 0; }
+        }
+    </style>
 </head>
 <body>
   <header>
-    <a href="index.html">
-      <button class="topbutton">About Me!</button>
-    </a>
-    <a href="projects.html">
-      <button class="topbutton">Projects!</button>
-    </a>
-    <a href="Resume.html">
-      <button class="topbutton">Resume!</button>
-    </a>
-    <a href="javascript.html">
-      <button class="topbutton">Java Script Demos</button>
-    </a>
+    <a href="index.html"><button class="topbutton">About Me</button></a>
+    <a href="projects.html"><button class="topbutton">Projects</button></a>
+    <a href="Resume.html"><button class="topbutton">Resume</button></a>
+    <a href="javascript.html"><button class="topbutton">JS Demos</button></a>
   </header>
 
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        padding: 20px;
-        text-align: center;
-    }
+  <h1>JavaScript Demos</h1>
 
-    section {
-        margin-bottom: 50px;
-    }
+  <div class="demos-grid">
 
-    button {
-        padding: 10px 15px;
-        margin-top: 10px;
-        cursor: pointer;
-        font-size: 16px;
-    }
+    <div class="demo-card">
+      <h2>Typewriter</h2>
+      <div id="typewriterBox"></div>
+    </div>
 
-    /* ===== MOUSE TRAIL EFFECT ===== */
-    .trail {
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        background: rgb(200, 0, 255);
-        border-radius: 50%;
-        pointer-events: none;
-        opacity: 1;
-        transform: translate(-50%, -50%);
-    }
+    <div class="demo-card">
+      <h2>Random Cat</h2>
+      <p>Fetches a photo from the cat API.</p>
+      <button class="demo-btn" id="catBtn">Get a cat</button>
+      <img id="catImg" alt="Random cat">
+    </div>
 
-    /* ===== TYPEWRITER ===== */
-    #typewriterBox {
-        font-size: 22px;
-        font-weight: bold;
-        border-right: 3px solid black;
-        width: fit-content;
-        margin: 0 auto;
-    }
+    <div class="demo-card">
+      <h2>Color Cycle</h2>
+      <p>Slowly cycles the background through colors.</p>
+      <button class="demo-btn" id="rainbowBtn">Start</button>
+    </div>
 
-    /* ===== CAT IMAGE ===== */
-    #catImg {
-        width: 250px;
-        margin-top: 10px;
-        border-radius: 10px;
-    }
+    <div class="demo-card">
+      <h2>Emoji Rain</h2>
+      <p>Drops a burst of emojis from the top of the screen.</p>
+      <button class="demo-btn" id="emojiBtn">Make it rain</button>
+    </div>
 
-    /* ===== DVD LOGO ===== */
-    #dvd {
-        position: absolute;
-        top: 100px;
-        left: 100px;
-        width: 120px;
-        height: 60px;
-        background: purple;
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 8px;
-        font-weight: bold;
-    }
+    <div class="demo-card">
+      <h2>Random Sound</h2>
+      <p>Plays a random cartoon sound effect.</p>
+      <button class="demo-btn" id="soundBtn">Play sound</button>
+    </div>
 
-    /* ===== FALLING EMOJIS ===== */
-    .emoji {
-        position: absolute;
-        font-size: 30px;
-        animation: fall 2.5s linear forwards;
-        pointer-events: none;
-    }
+    <div class="demo-card">
+      <h2>DVD Bounce</h2>
+      <p>Classic screensaver, contained in a box.</p>
+      <div id="dvdBox">
+        <div id="dvd">DVD</div>
+      </div>
+    </div>
 
-    @keyframes fall {
-        to {
-            transform: translateY(100vh);
-            opacity: 0;
+    <div class="demo-card">
+      <h2>Mouse Trail</h2>
+      <p>Toggle a dot trail that follows your cursor.</p>
+      <button class="demo-btn" id="trailBtn">Enable trail</button>
+    </div>
+
+  </div>
+
+  <script>
+    // Typewriter
+    const typeText = "Welcome to my JavaScript demo page!";
+    let i = 0;
+    function typeWriter() {
+        if (i < typeText.length) {
+            document.getElementById("typewriterBox").textContent += typeText[i++];
+            setTimeout(typeWriter, 80);
         }
     }
+    typeWriter();
 
-    /* ===== SHAKE EFFECT ===== */
-    @keyframes shakeScreen {
-        0% { transform: translate(0px, 0px); }
-        25% { transform: translate(-15px, 10px); }
-        50% { transform: translate(15px, -10px); }
-        75% { transform: translate(-15px, 10px); }
-        100% { transform: translate(0px, 0px); }
-    }
-</style>
+    // Cat API
+    document.getElementById("catBtn").onclick = () => {
+        fetch("https://api.thecatapi.com/v1/images/search")
+            .then(r => r.json())
+            .then(data => {
+                const img = document.getElementById("catImg");
+                img.src = data[0].url;
+                img.style.display = "block";
+            });
+    };
 
-<body>
-
-<h1>JavaScript Fun Effects!</h1>
-
-<section>
-    <h2>Typewriter Effect</h2>
-    <div id="typewriterBox"></div>
-</section>
-
-<section>
-    <h2>Random Cat Image</h2>
-    <button id="catBtn">Show Random Cat image</button><br>
-    <img id="catImg" src="">
-</section>
-
-<section>
-    <h2>Rainbow Background</h2>
-    <button id="rainbowBtn">Activate Rainbow background</button>
-</section>
-
-<section>
-    <h2>Falling Emojis</h2>
-    <button id="emojiBtn">Make it Rain emojis</button>
-</section>
-
-<section>
-    <h2>Random Funny Sounds</h2>
-    <button id="soundBtn">Play a Random Sound </button>
-</section>
-
-<!-- DVD LOGO -->
-<div id="dvd">DVD</div>
-
-<script>
-/* ========================================
-   1. MOUSE TRAIL EFFECT
-========================================== */
-document.addEventListener("mousemove", e => {
-    const dot = document.createElement("div");
-    dot.className = "trail";
-    dot.style.left = e.pageX + "px";
-    dot.style.top = e.pageY + "px";
-    document.body.appendChild(dot);
-
-    setTimeout(() => dot.remove(), 500);
-});
-
-/* ========================================
-   2. TYPEWRITER EFFECT
-========================================== */
-const typeText = "Welcome to my JavaScript demo page!";
-let i = 0;
-
-function typeWriter() {
-    if (i < typeText.length) {
-        document.getElementById("typewriterBox").textContent += typeText[i];
-        i++;
-        setTimeout(typeWriter, 80);
-    }
-}
-typeWriter();
-
-/* ========================================
-   3. RANDOM CAT IMAGE (API)
-========================================== */
-document.getElementById("catBtn").onclick = () => {
-    fetch("https://api.thecatapi.com/v1/images/search")
-        .then(r => r.json())
-        .then(data => {
-            document.getElementById("catImg").src = data[0].url;
-        });
-};
-
-/* ========================================
-   4. RAINBOW BACKGROUND
-========================================== */
-document.getElementById("rainbowBtn").onclick = () => {
+    // Color cycle — toggleable, dark tones so text stays readable
+    let colorInterval = null;
     let hue = 0;
-    setInterval(() => {
-        document.body.style.backgroundColor = `hsl(${hue}, 80%, 60%)`;
-        hue = (hue + 3) % 360;
-    }, 50);
-};
-
-/* ========================================
-   5. FALLING EMOJIS
-========================================== */
-document.getElementById("emojiBtn").onclick = () => {
-    const emojis = ["🔥", "✨", "🎉", "🤖", "😎", "🌈", "⭐"];
-    const emoji = document.createElement("div");
-    emoji.className = "emoji";
-    emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-    emoji.style.left = Math.random() * window.innerWidth + "px";
-    emoji.style.top = "-20px";
-    document.body.appendChild(emoji);
-
-    setTimeout(() => emoji.remove(), 2500);
-};
-
-/* ========================================
-   6. RANDOM SOUND
-========================================== */
-const sounds = [
-    "https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg",
-    "https://actions.google.com/sounds/v1/cartoon/boing.ogg",
-    "https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg"
-];
-
-document.getElementById("soundBtn").onclick = () => {
-    const audio = new Audio(sounds[Math.floor(Math.random() * sounds.length)]);
-    audio.play();
-};
-
-/* ========================================
-   7. CRAZY DVD BOUNCING LOGO
-========================================== */
-const dvd = document.getElementById("dvd");
-let x = 100, y = 100;
-let vx = 2, vy = 2;
-
-function crazyScreen() {
-    document.body.style.animation = "shakeScreen 0.4s";
-
-    let flashes = 0;
-    const flash = setInterval(() => {
-        document.body.style.backgroundColor =
-            `hsl(${Math.random() * 360}, 100%, 60%)`;
-        flashes++;
-        if (flashes > 8) {
-            clearInterval(flash);
+    const rainbowBtn = document.getElementById("rainbowBtn");
+    rainbowBtn.onclick = () => {
+        if (colorInterval) {
+            clearInterval(colorInterval);
+            colorInterval = null;
             document.body.style.backgroundColor = "";
+            rainbowBtn.textContent = "Start";
+            rainbowBtn.classList.remove("active");
+        } else {
+            colorInterval = setInterval(() => {
+                document.body.style.backgroundColor = `hsl(${hue}, 60%, 15%)`;
+                hue = (hue + 1) % 360;
+            }, 50);
+            rainbowBtn.textContent = "Stop";
+            rainbowBtn.classList.add("active");
         }
-    }, 40);
+    };
 
-    setTimeout(() => {
-        document.body.style.animation = "";
-    }, 400);
-}
+    // Emoji rain — burst of 10
+    const emojis = ["🔥", "✨", "🎉", "🤖", "😎", "🌈", "⭐", "💥", "🎮", "🚀", "🍕", "👾"];
+    document.getElementById("emojiBtn").onclick = () => {
+        for (let j = 0; j < 10; j++) {
+            const el = document.createElement("div");
+            el.className = "emoji-fall";
+            el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            el.style.left = Math.random() * window.innerWidth + "px";
+            el.style.top = "-30px";
+            el.style.animationDelay = (Math.random() * 0.6) + "s";
+            document.body.appendChild(el);
+            setTimeout(() => el.remove(), 2800);
+        }
+    };
 
-function animateDVD() {
-    const w = window.innerWidth - dvd.offsetWidth;
-    const h = window.innerHeight - dvd.offsetHeight;
+    // Random sound
+    const sounds = [
+        "https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg",
+        "https://actions.google.com/sounds/v1/cartoon/boing.ogg",
+        "https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg"
+    ];
+    document.getElementById("soundBtn").onclick = () => {
+        new Audio(sounds[Math.floor(Math.random() * sounds.length)]).play();
+    };
 
-    x += vx;
-    y += vy;
+    // DVD bounce — contained inside #dvdBox, changes color on wall hit
+    const dvd = document.getElementById("dvd");
+    const dvdBox = document.getElementById("dvdBox");
+    let dvdX = 10, dvdY = 10, dvdVx = 1.2, dvdVy = 1.2;
+    const dvdColors = ["#7b2fbe", "#c0392b", "#2471a3", "#1e8449", "#d35400"];
+    let dvdColorIdx = 0;
 
-    let hitCorner =
-        (x <= 0 || x >= w) &&
-        (y <= 0 || y >= h);
+    function animateDVD() {
+        const maxX = dvdBox.offsetWidth - dvd.offsetWidth;
+        const maxY = dvdBox.offsetHeight - dvd.offsetHeight;
+        dvdX += dvdVx;
+        dvdY += dvdVy;
+        if (dvdX <= 0 || dvdX >= maxX) {
+            dvdVx *= -1;
+            dvdColorIdx = (dvdColorIdx + 1) % dvdColors.length;
+            dvd.style.background = dvdColors[dvdColorIdx];
+        }
+        if (dvdY <= 0 || dvdY >= maxY) {
+            dvdVy *= -1;
+            dvdColorIdx = (dvdColorIdx + 1) % dvdColors.length;
+            dvd.style.background = dvdColors[dvdColorIdx];
+        }
+        dvdX = Math.max(0, Math.min(dvdX, maxX));
+        dvdY = Math.max(0, Math.min(dvdY, maxY));
+        dvd.style.left = dvdX + "px";
+        dvd.style.top = dvdY + "px";
+        requestAnimationFrame(animateDVD);
+    }
+    animateDVD();
 
-    if (x <= 0 || x >= w) vx *= -1;
-    if (y <= 0 || y >= h) vy *= -1;
+    // Mouse trail — off by default, toggle button
+    let trailEnabled = false;
+    const trailBtn = document.getElementById("trailBtn");
+    trailBtn.onclick = () => {
+        trailEnabled = !trailEnabled;
+        trailBtn.textContent = trailEnabled ? "Disable trail" : "Enable trail";
+        trailBtn.classList.toggle("active", trailEnabled);
+    };
 
-    if (hitCorner) crazyScreen();
-
-    dvd.style.left = x + "px";
-    dvd.style.top = y + "px";
-
-    requestAnimationFrame(animateDVD);
-}
-animateDVD();
-</script>
-
+    document.addEventListener("mousemove", e => {
+        if (!trailEnabled) return;
+        const dot = document.createElement("div");
+        dot.className = "trail-dot";
+        dot.style.left = e.clientX + "px";
+        dot.style.top = e.clientY + "px";
+        document.body.appendChild(dot);
+        setTimeout(() => dot.remove(), 400);
+    });
+  </script>
 </body>
 </html>
