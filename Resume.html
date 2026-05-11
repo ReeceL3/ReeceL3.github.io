@@ -3,6 +3,149 @@
 <head>
     <title>Resume — Reece Leafblad</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .resume {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        .resume-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .resume-header p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            margin: 4px 0;
+        }
+
+        .section {
+            margin-bottom: 36px;
+        }
+
+        .section-title {
+            font-size: 13px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #a78bfa;
+            border-bottom: 1px solid rgba(167, 139, 250, 0.3);
+            padding-bottom: 6px;
+            margin-bottom: 16px;
+        }
+
+        .entry {
+            margin-bottom: 18px;
+        }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .entry-title {
+            font-weight: bold;
+            font-size: 15px;
+            color: #fff;
+        }
+
+        .entry-sub {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.55);
+        }
+
+        .entry-date {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            white-space: nowrap;
+        }
+
+        .entry ul {
+            margin: 6px 0 0 0;
+            padding-left: 18px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.7;
+        }
+
+        .entry p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.75);
+            margin: 6px 0 0;
+            line-height: 1.7;
+        }
+
+        .qual-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 10px;
+        }
+
+        .qual-list li {
+            background: rgba(167, 139, 250, 0.07);
+            border: 1px solid rgba(167, 139, 250, 0.2);
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .qual-list li strong {
+            display: block;
+            color: #a78bfa;
+            margin-bottom: 2px;
+        }
+
+        .cert-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .cert-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 7px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .cert-list li:last-child {
+            border-bottom: none;
+        }
+
+        .cert-date {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 13px;
+        }
+
+        .activities-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .activities-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 7px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .activities-list li:last-child {
+            border-bottom: none;
+        }
+    </style>
 </head>
 <body>
   <header>
@@ -12,11 +155,112 @@
     <a href="javascript.html"><button class="topbutton">JS Demos</button></a>
   </header>
 
-  <div class="content">
-    <h1>Resume</h1>
-    <h2>Experience</h2>
-    <p>Lead host and busser at The Keg Steakhouse + Bar.</p>
-    <p>Lawn care — summer mowing service.</p>
+  <div class="resume">
+    <div class="resume-header">
+      <h1>Reece Leafblad</h1>
+      <p>rgleafblad@gmail.com &nbsp;|&nbsp; 720-496-3750</p>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Summary</div>
+      <ul class="qual-list">
+        <li><strong>Professionalism</strong>Organized, on time, and on task.</li>
+        <li><strong>Leadership & Communication</strong>Team work, self directed, communication is key.</li>
+        <li><strong>Teamwork</strong>Not afraid to ask questions, fast learner.</li>
+        <li><strong>Adaptable</strong>Always ready to take on a different task when needed.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Education</div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">Dakota Ridge High School</span>
+          <span class="entry-date">Graduation May 2027</span>
+        </div>
+        <div class="entry-sub">Littleton, CO</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">Warren Tech Central &mdash; Computer Science / Cybersecurity</span>
+          <span class="entry-date">Graduation May 2027</span>
+        </div>
+        <div class="entry-sub">Lakewood, CO</div>
+        <p>Industry training program offering certifications and a strong foundation in networking, ethical hacking, and web development using Python and HTML.</p>
+        <ul>
+          <li>Programming &amp; web development</li>
+          <li>Ethical hacking &amp; cyber defense</li>
+          <li>Cryptography &amp; artificial intelligence</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Certifications</div>
+      <ul class="cert-list">
+        <li><span>Hospitality Team Member (US)</span><span class="cert-date">November 2025</span></li>
+        <li><span>Prime Rib-ology Certification</span><span class="cert-date">November 2025</span></li>
+        <li><span>Steakology Certification</span><span class="cert-date">November 2025</span></li>
+        <li><span>Information Security Policy (Staff)</span><span class="cert-date">November 2025</span></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Experience</div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">Host / Busser &mdash; The Keg Steakhouse + Bar</span>
+          <span class="entry-date">November 2025 – Present</span>
+        </div>
+        <div class="entry-sub">Lakewood, CO</div>
+        <ul>
+          <li>Consistently on task regardless of pace or volume.</li>
+          <li>Proactively assists coworkers with any issues that arise.</li>
+          <li>Maintains clear communication across the team to ensure a smooth work environment.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">Secretary &mdash; Warren Tech CTSO Leadership</span>
+          <span class="entry-date">August 2025 – Present</span>
+        </div>
+        <div class="entry-sub">Lakewood, CO</div>
+        <ul>
+          <li>Records meeting notes and documents upcoming initiatives for the leadership team.</li>
+          <li>Collaborates with the president and team to capture additional context and action items.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">NASA Intern &mdash; NASA HUNCH Program</span>
+          <span class="entry-date">August 2025 – Present</span>
+        </div>
+        <div class="entry-sub">Lakewood, CO</div>
+        <ul>
+          <li>Finalist in a national competition (NASA HUNCH).</li>
+          <li>Developing an AI-based preventative maintenance system for the NASA ECLSS.</li>
+          <li>Coordinated all communication leads and managed a 4-person project team.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Activities &amp; Leadership</div>
+      <ul class="activities-list">
+        <li><span>Captain, Dakota Ridge Soccer Team</span><span class="cert-date">2026 – Present</span></li>
+        <li><span>NASA HUNCH Finalist</span><span class="cert-date">2025 – Present</span></li>
+        <li><span>CTSO Secretary, Warren Tech Computer Science Program</span><span class="cert-date">2025 – Present</span></li>
+        <li><span>Varsity Athlete: Soccer, Dakota Ridge High School</span><span class="cert-date">2023 – Present</span></li>
+        <li><span>Mission Trip — Wolf Point, Montana Vacation Bible School</span><span class="cert-date">2023 – Present</span></li>
+        <li><span>Volunteer: Soccer Adaptive Day</span><span class="cert-date">2023 – Present</span></li>
+      </ul>
+    </div>
+
   </div>
 </body>
 </html>
