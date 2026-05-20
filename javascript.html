@@ -128,12 +128,23 @@
     </style>
 </head>
 <body>
-  <header>
-    <a href="index.html"><button class="topbutton">About Me</button></a>
-    <a href="projects.html"><button class="topbutton">Projects</button></a>
-    <a href="Resume.html"><button class="topbutton">Resume</button></a>
-    <a href="javascript.html"><button class="topbutton">JS Demos</button></a>
-  </header>
+
+  <button class="sidebar-toggle" id="sidebarToggle">&#9776;</button>
+
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <span>Reece Leafblad</span>
+      <button class="sidebar-close" id="sidebarClose">&times;</button>
+    </div>
+    <div class="sidebar-nav">
+      <a href="index.html" class="sidebar-link">About Me</a>
+      <a href="projects.html" class="sidebar-link">Projects</a>
+      <a href="Resume.html" class="sidebar-link">Resume</a>
+      <a href="javascript.html" class="sidebar-link">JS Demos</a>
+    </div>
+  </nav>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
   <h1>JavaScript Demos</h1>
 
@@ -303,5 +314,6 @@
         setTimeout(() => dot.remove(), 400);
     });
   </script>
+  <script src="sidebar.js"></script>
 </body>
 </html>
